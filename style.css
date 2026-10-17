@@ -1,0 +1,524 @@
+
+/* =========================
+   PRINCESS PINK BIRTHDAY
+   ========================= */
+
+:root {
+  --pink: #ffb6d9;
+  --deep-pink: #d94e94;
+  --dark-pink: #8b285f;
+  --cream: #fff8fc;
+  --gold: #ffe7a3;
+  --glass: rgba(70, 22, 58, 0.48);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--cream);
+  font-family: Georgia, "Times New Roman", serif;
+  background: #381b3b;
+}
+
+/* Castle image background */
+
+.background-image {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  background-image: url("assets/images/castle.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: castleZoom 25s ease-in-out infinite alternate;
+}
+
+.background-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(40, 12, 43, 0.28),
+      rgba(54, 14, 47, 0.48),
+      rgba(38, 10, 35, 0.72)
+    );
+}
+
+@keyframes castleZoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.08);
+  }
+}
+
+/* Sparkles and confetti */
+
+.sparkle-layer,
+.confetti-layer {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sparkle-layer {
+  z-index: 5;
+}
+
+.confetti-layer {
+  z-index: 20;
+}
+
+.sparkle {
+  position: absolute;
+  color: #fff4c7;
+  text-shadow: 0 0 12px #fff, 0 0 24px #ffb6e0;
+  animation: sparkleFloat var(--duration, 5s) ease-in-out infinite;
+  opacity: 0;
+}
+
+@keyframes sparkleFloat {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.6) rotate(0deg);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-20px) scale(1.2) rotate(35deg);
+  }
+}
+
+.confetti {
+  position: absolute;
+  top: -20px;
+  width: 9px;
+  height: 14px;
+  border-radius: 3px;
+  animation: confettiFall 3.5s linear forwards;
+}
+
+@keyframes confettiFall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Header */
+
+.top-bar {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 5%;
+}
+
+.brand {
+  color: #fff0fa;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 12px #55183e;
+}
+
+.music-button {
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 30px;
+  color: white;
+  background: rgba(93, 27, 74, 0.55);
+  font: inherit;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.25s;
+}
+
+.music-button:hover {
+  background: rgba(190, 63, 132, 0.8);
+  transform: translateY(-2px);
+}
+
+/* Main screens */
+
+main {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  min-height: calc(100vh - 125px);
+  padding: 20px;
+}
+
+.screen {
+  display: none;
+  width: 100%;
+  animation: screenAppear 0.8s ease both;
+}
+
+.screen.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes screenAppear {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Glass cards */
+
+.glass-card {
+  width: min(680px, 100%);
+  padding: clamp(25px, 5vw, 48px);
+  border: 1px solid rgba(255, 229, 246, 0.62);
+  border-radius: 28px;
+  background: var(--glass);
+  box-shadow:
+    0 18px 60px rgba(24, 4, 22, 0.38),
+    inset 0 0 35px rgba(255, 220, 242, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 18px;
+  color: var(--gold);
+  font-family: Arial, sans-serif;
+  font-size: 0.76rem;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.crown {
+  margin-bottom: 12px;
+  font-size: 3.2rem;
+  filter: drop-shadow(0 0 14px rgba(255, 226, 148, 0.7));
+}
+
+h1,
+h2 {
+  margin: 0;
+  color: #fff4fb;
+  font-weight: normal;
+  line-height: 1.2;
+  text-shadow: 0 3px 18px rgba(30, 3, 28, 0.45);
+}
+
+h1 {
+  font-size: clamp(2rem, 6vw, 3.6rem);
+}
+
+h1 span {
+  color: #ffd1e8;
+  font-style: italic;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+}
+
+.description {
+  max-width: 490px;
+  margin: 22px auto;
+  color: #fff2fa;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.invitation-intro {
+  margin: 12px 0;
+  color: #ffe6f3;
+  font-size: 1.05rem;
+}
+
+.divider {
+  margin: 20px 0;
+  color: var(--gold);
+  font-size: 1.4rem;
+  letter-spacing: 8px;
+}
+
+.invitation-note {
+  margin: 22px 0;
+  color: #ffe4f2;
+  font-style: italic;
+}
+
+/* Buttons */
+
+.royal-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  min-height: 50px;
+  margin-top: 12px;
+  padding: 14px 25px;
+  border: 1px solid #fff2c8;
+  border-radius: 50px;
+  color: #6d204d;
+  background: linear-gradient(135deg, #fff0b9, #ffcae5 55%, #f5a6d0);
+  box-shadow: 0 7px 25px rgba(255, 174, 220, 0.28);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.royal-button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(255, 174, 220, 0.45);
+}
+
+.royal-button:focus-visible,
+.music-button:focus-visible,
+.jewel:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 4px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Jewel game */
+
+.game-card {
+  width: min(760px, 100%);
+}
+
+.score-board {
+  display: inline-block;
+  margin: 8px 0 15px;
+  padding: 10px 18px;
+  border: 1px solid rgba(255, 236, 247, 0.5);
+  border-radius: 30px;
+  background: rgba(255, 221, 240, 0.13);
+  color: #fff4fb;
+}
+
+.score-board strong {
+  color: var(--gold);
+  font-size: 1.2rem;
+}
+
+.jewel-field {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.jewel {
+  display: grid;
+  place-items: center;
+  min-height: 85px;
+  border: 1px solid rgba(255, 235, 249, 0.7);
+  border-radius: 18px;
+  background: rgba(255, 222, 241, 0.15);
+  font-size: clamp(1.8rem, 5vw, 2.7rem);
+  cursor: pointer;
+  transition: transform 0.25s, background 0.25s;
+  animation: jewelGlow 2s ease-in-out infinite alternate;
+}
+
+.jewel:hover {
+  transform: translateY(-5px) scale(1.06);
+  background: rgba(255, 223, 243, 0.3);
+}
+
+.jewel.collected {
+  opacity: 0.35;
+  cursor: default;
+  animation: none;
+  transform: scale(0.85);
+}
+
+@keyframes jewelGlow {
+  from {
+    filter: drop-shadow(0 0 2px rgba(255, 207, 237, 0.3));
+  }
+
+  to {
+    filter: drop-shadow(0 0 12px rgba(255, 207, 237, 0.8));
+  }
+}
+
+.game-message {
+  min-height: 28px;
+  color: #fff0f9;
+  line-height: 1.6;
+}
+
+/* Birthday reveal */
+
+.birthday-label {
+  color: var(--gold);
+  font-family: Arial, sans-serif;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.celebration-crown {
+  animation: crownFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes crownFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(-4deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(4deg);
+  }
+}
+
+.birthday-message {
+  max-width: 490px;
+  margin: 22px auto;
+  color: #fff2fa;
+  font-size: 1.08rem;
+  line-height: 1.9;
+}
+
+.birthday-wish {
+  color: #ffd1e8;
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.celebration-icons {
+  margin: 20px 0 10px;
+  font-size: 1.5rem;
+  letter-spacing: 6px;
+}
+
+/* Footer */
+
+.site-footer {
+  position: relative;
+  z-index: 3;
+  padding: 14px 15px 22px;
+  color: rgba(255, 239, 249, 0.85);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* Smaller screens */
+
+@media (max-width: 600px) {
+  .top-bar {
+    padding: 16px 4%;
+  }
+
+  .brand {
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
+
+  .music-button {
+    padding: 9px 12px;
+    font-size: 0.85rem;
+  }
+
+  main {
+    min-height: calc(100vh - 115px);
+    padding: 12px;
+  }
+
+  .glass-card {
+    padding: 26px 20px;
+    border-radius: 22px;
+  }
+
+  .description {
+    font-size: 0.98rem;
+  }
+
+  .jewel-field {
+    gap: 7px;
+  }
+
+  .jewel {
+    min-height: 60px;
+    border-radius: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* Three-level game additions */
+
+.level-label {
+  display: inline-block;
+  margin: 0 auto 14px;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 231, 163, 0.8);
+  border-radius: 30px;
+  color: #ffe7a3;
+  background: rgba(255, 220, 240, 0.12);
+  font-family: Arial, sans-serif;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.jewel:disabled {
+  cursor: default;
+}
+
+.jewel.collected {
+  opacity: 0.35;
+  transform: scale(0.85);
+}
+
+.jewel-field {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+@media (max-width: 420px) {
+  .jewel-field {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .jewel {
+    min-height: 55px;
+  }
+}

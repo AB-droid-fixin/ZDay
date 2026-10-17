@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8b9d7">
+  <title>Princess Zia | Royal Birthday Quest</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <audio id="trumpetSound" preload="auto">
+  <source src="assets/audio/trumpet.mp3" type="audio/mpeg">
+</audio>
+</head>
+<body>
+  <!-- Castle background -->
+  <div class="background-image" aria-hidden="true"></div>
+  <div class="background-overlay" aria-hidden="true"></div>
+  <div id="sparkleLayer" class="sparkle-layer" aria-hidden="true"></div>
+  <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
+
+  <header class="top-bar">
+    <div class="brand">✦ Princess Zia ✦</div>
+    <button id="musicButton" class="music-button" type="button">
+      ♫ Play Music
+    </button>
+  </header>
+
+  <main>
+    <!-- Screen 1: Welcome -->
+    <section id="welcomeScreen" class="screen active">
+      <div class="glass-card welcome-card">
+        <p class="eyebrow">A ROYAL ADVENTURE AWAITS</p>
+        <div class="crown">👑</div>
+        <h1>Welcome to the<br><span>Enchanted Kingdom</span></h1>
+        <p class="description">
+          A little magic, a little sparkle, and a very special birthday
+          celebration are waiting just for you!
+        </p>
+        <button id="enterButton" class="royal-button" type="button">
+          Enter the Kingdom <span>✧</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Screen 2: Invitation -->
+    <section id="invitationScreen" class="screen">
+      <div class="glass-card invitation-card">
+        <p class="eyebrow">BY ROYAL DECREE</p>
+        <div class="crown">👑</div>
+        <p class="invitation-intro">You are cordially invited to celebrate</p>
+        <h2>A Royal Birthday!</h2>
+        <div class="divider">❀ ✧ ❀</div>
+        <p class="description">
+          The castle gates are open, the stars are shining, and the kingdom
+          is ready for a day filled with laughter, love, and magic.
+        </p>
+        <p class="invitation-note">Your next royal mission awaits...</p>
+        <button id="gameButton" class="royal-button" type="button">
+          Begin the Royal Quest <span>✧</span>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- Screen 3: Three-level royal game -->
+    <section id="gameScreen" class="screen">
+      <div class="glass-card game-card">
+        <p class="eyebrow">THE ROYAL TREASURE HUNT</p>
+
+        <p id="levelLabel" class="level-label">LEVEL 1 OF 3</p>
+        <h2 id="gameTitle">The Jewel Garden</h2>
+
+        <p id="gameDescription" class="description">
+          Collect 5 magical jewels to continue your adventure!
+        </p>
+
+        <div class="score-board">
+          Collected: <strong id="jewelCount">0</strong> /
+          <strong id="jewelTarget">5</strong>
+        </div>
+
+        <div
+          id="jewelField"
+          class="jewel-field"
+          aria-label="Royal treasure game"
+        ></div>
+
+        <p id="gameMessage" class="game-message" aria-live="polite">
+          Tap each treasure to collect it!
+        </p>
+
+        <button
+          id="revealButton"
+          class="royal-button hidden"
+          type="button"
+        >
+          Continue to Next Level ✨
+        </button>
+      </div>
+    </section>
+
+
+    <!-- Screen 4: Birthday reveal -->
+    <section id="revealScreen" class="screen">
+      <div class="glass-card reveal-card">
+        <p class="eyebrow">THE KINGDOM CELEBRATES YOU</p>
+        <div class="crown celebration-crown">👑</div>
+        <p class="birthday-label">A VERY MAGICAL DAY FOR</p>
+        <h2 id="birthdayHeading">Happy 7th Birthday, Zia!</h2>
+        <div class="divider">✧ ❀ ✧</div>
+        <p class="birthday-message">
+          May your day be filled with magical moments, beautiful surprises,
+          sweet laughter, and all the love your heart can hold.
+        </p>
+        <p class="birthday-wish">Keep sparkling, little princess! 💖</p>
+        <div class="celebration-icons" aria-hidden="true">🦋 ✨ 🌸 ✨ 🦋</div>
+        <button id="celebrateButton" class="royal-button" type="button">
+          Celebrate Again! <span>♡</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    Made with love, magic, and a little sparkle ✨
+  </footer>
+
+  <audio id="birthdayMusic" src="assets/audio/birthday-music.mp3" loop preload="auto"></audio>
+</body>
+</html>
